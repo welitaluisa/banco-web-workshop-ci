@@ -1,6 +1,9 @@
 name: 'Banco Web - CI'
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -15,13 +18,13 @@ jobs:
       - name: Checkout do repositório
         uses: actions/checkout@v4
 
-      - name: Instalar deps
+      - name: Instalar dependências
         run: npm install
 
       - name: Iniciar o servidor de mocks
         run: npm run mock-server &
-  
-      - name: Iniciar o servidor da aplicacao
+
+      - name: Iniciar o servidor da aplicação
         run: npm run server &
 
       - name: Executar os testes
